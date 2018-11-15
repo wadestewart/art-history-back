@@ -7,7 +7,7 @@ app.set('port', process.env.PORT || 3001)
 
 app.listen(app.get('port'), () => console.log('live on port 3001'))
 app.get('/', (req, res) => {
-    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.apiKey}&per_page=2`)
+    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.apiKey}&per_page=25`)
         .then(res => res.json())
         .then(data => {
             res.send(data.objects)
@@ -16,19 +16,27 @@ app.get('/', (req, res) => {
 })
 
 app.get('/artwork', (req, res) => {
-    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.apiKey}&per_page=1`)
+    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.apiKey}&per_page=5`)
         .then(res => res.json())
         .then(data => {
-            // I need to write a function here to handle the 2nd API call
+            const ids = []
+            const responses = []
+            const compReqs = 0
             data.objects.forEach((art) => {
-                let id = art.id
-                fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getInfo&access_token=${process.env.apiKey}&id=${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    res.send(data)
-                })
+                ids.push(art.id)
+            })
+            // console.log(ids)
+            ids.forEach((artId) => {
+                let id = artId
+                console.log(id)
+                // fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getInfo&access_token=${process.env.apiKey}&id=${id}`)
+                // .then(res => res.json())
+                // .then(data => {
+                //     console.log(data)
+                //     res.send(data)
+                // })
             })
         })
-    
+        .catch(err => console.log(err))    
 })
 
