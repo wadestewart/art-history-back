@@ -48,25 +48,6 @@ fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects
                     res.send(data)
                 })
         })
-
-
-
-        // urls.forEach((url) => {
-        //     const responses = []
-        //     app.get('/artwork', (req, res) => {
-        //         fetch(url)
-        //             .then(res => res.json())
-        //             .then(data => {
-        //                 console.log(data)
-        //                 responses.push(data)
-        //                 compReqs ++
-        //                 if (compReqs === urls.length) {
-        //                     console.log(responses)
-        //                     // res.send(data)
-        //                 }
-        //             })
-        //     })
-        // })
     })
     .catch(err => console.log(err))    
     
