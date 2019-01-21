@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 3001)
 app.listen(app.get('port'), () => console.log('live on port 3001'))
 
 app.get('/', (req, res) => {
-    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.apiKey}&per_page=3`)
+    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.API_KEY}&per_page=100`)
         .then(res => res.json())
         .then(data => {
             res.send(data)
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:artwork_id', (req, res) => {
-    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getInfo&access_token=${process.env.apiKey}&id=${req.params.artwork_id}`)
+    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getInfo&access_token=${process.env.API_KEY}&id=${req.params.artwork_id}`)
         .then(res => res.json())
         .then(data => {
             res.send(data)
