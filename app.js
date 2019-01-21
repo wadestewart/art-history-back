@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 3001)
 app.listen(app.get('port'), () => console.log('live on port 3001'))
 
 app.get('/', (req, res) => {
-    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.API_KEY}&per_page=100`)
+    fetch(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getOnDisplay&access_token=${process.env.API_KEY}&per_page=50`)
         .then(res => res.json())
         .then(data => {
             res.send(data)
