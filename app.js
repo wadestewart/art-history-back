@@ -1,4 +1,3 @@
-const nr        = require('newrelic')
 const express   = require('express')
 const fetch     = require('node-fetch')
 const cors      = require('cors')
@@ -6,7 +5,6 @@ const cors      = require('cors')
 const app       = express()
 
 require('dotenv').config()
-// require('newrelic')
 
 app.use(cors())
 
