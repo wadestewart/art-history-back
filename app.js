@@ -5,6 +5,7 @@ const cors      = require('cors')
 const app       = express()
 
 require('dotenv').config()
+require('newrelic')
 
 app.use(cors())
 
