@@ -1,3 +1,5 @@
 #files
 .env
-newrelic.js
+
+# Folder
+SSH/
